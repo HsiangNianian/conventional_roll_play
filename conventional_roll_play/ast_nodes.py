@@ -24,7 +24,7 @@ class ActNode(Node):
         return f"<ACT>{self.content}</ACT>"
 
 class CommentNode(Node):
-    def __init__(self, content):
+    def __init__(self, content): 
         super().__init__()
         self.content = content
 
@@ -38,3 +38,11 @@ class QuoteNode(Node):
 
     def render(self):
         return f"<QUOTE>{self.content}</QUOTE>"
+    
+class NormalNode(Node):
+    def __init__(self, content):
+        super().__init__()
+        self.content = content
+        
+    def render(self):
+        return f"{self.content}"

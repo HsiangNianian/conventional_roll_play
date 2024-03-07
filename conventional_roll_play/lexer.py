@@ -1,5 +1,6 @@
 import re
 
+
 class Token:
     def __init__(self, type_, value):
         self.type = type_
@@ -7,6 +8,7 @@ class Token:
 
     def __repr__(self):
         return f"Token({self.type}, {self.value})"
+
 
 class Lexer:
     def __init__(self, text):
@@ -33,10 +35,20 @@ class Lexer:
                 quote_content = self._read_until_quote(char)
                 tokens.append(Token("QUOTE", quote_content))
 
+            elif char is not None:
+                self.pos += 1
+                normal_content = self._read_until_normal(char)
+                # Skip irrelevant characters
+                tokens.append(Token("NORMAL", quote_content))
+            
             else:
-                self.pos += 1  # Skip irrelevant characters
-
+                self.pos += 1
+        
         return tokens
+
+    def _read_until_normal(self):
+        start = self.pos
+        return self.text[self.pos]
 
     def _read_until_newline(self):
         start = self.pos
@@ -53,9 +65,10 @@ class Lexer:
         return self.text[start:self.pos-1]
 
     def _read_until_quote(self, open_quote):
-        close_quote = open_quote
+        close_quote = ['"', "“", "”"]
         start = self.pos
-        while self.pos < len(self.text) and self.text[self.pos] != close_quote:
+        while self.pos < len(self.text) and self.text[self.pos] not in close_quote:
+            print(self.text[self.pos])
             self.pos += 1
         self.pos += 1  # Skip the close quote
         return self.text[start:self.pos-1]

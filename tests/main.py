@@ -1,5 +1,5 @@
-from .parser import parse_text
-from .renderer import Renderer
+from conventional_roll_play.parser import parse_text
+from conventional_roll_play.renderer import Renderer
 
 def main():
     text = input("Enter your text for parsing and rendering: ")

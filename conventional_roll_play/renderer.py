@@ -1,5 +1,3 @@
-# renderer.py
-
 from .ast_nodes import RootNode, ActNode, CommentNode, QuoteNode
 
 class Renderer:

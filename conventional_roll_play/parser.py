@@ -1,5 +1,5 @@
 from .lexer import Lexer, Token
-from .ast_nodes import ActNode, CommentNode, QuoteNode, RootNode
+from .ast_nodes import ActNode, CommentNode, QuoteNode, RootNode, NormalNode
 
 
 class Parser:
@@ -19,6 +19,9 @@ class Parser:
                 root.add_child(node)
             elif token.type == "QUOTE":
                 node = QuoteNode(token.value)
+                root.add_child(node)
+            elif token.type == "NormalNode":
+                node = NormalNode(token.value)
                 root.add_child(node)
             self.pos += 1
         return root

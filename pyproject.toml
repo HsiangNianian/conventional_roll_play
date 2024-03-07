@@ -1,0 +1,26 @@
+[build-system]
+requires = ["maturin>=1.4,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "conventional_roll_play"
+dynamic = ["version"]
+description = "conventional roll play text lexer and parser"
+authors = [
+    {name = "简律纯", email = "i@jyunko.cn"},
+]
+dependencies = []
+requires-python = ">=3.8"
+readme = "README.md"
+license = {text = "MIT"}
+
+[tool.maturin]
+module-name = "conventional_roll_play.rplib"
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "pip>=24.0",
+]
+lint = [
+    "ruff>=0.3.1",
+]
