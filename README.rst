@@ -8,4 +8,4 @@ Change Branches::
 
 .. _pyo3: https://abc.com
 .. _python: https://abc.com
-.. _rust: httsp://abc.com
+.. _rust: https://abc.com
